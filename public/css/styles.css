@@ -1,3 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
-    background-color: chocolate;
+    background-color: rgb(133, 125, 170);
+    height: 100vh;
+}
+
+/* Nav bar */
+.nav-bar-container {
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(237, 233, 255);
+    position: relative;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+ul.nav-bar > li {
+    list-style: none;
+    margin: 0 20px;
+    font-size: 1.1rem;
+}
+
+ul.nav-bar > li > a {
+    text-decoration: none;
+    color: rgb(67, 63, 88);
+    padding: 5px 10px;
+    transition: ease-in 0.5s;
+}
+
+ul.nav-bar > li > a:hover {
+    background-color: rgba(133, 125, 170, 0.61);
+    color: white;
+    border-radius: 20px;
+}
+
+/* General */
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: rgb(67, 63, 88);
+}
+
+/* Wave shape - generated at shapedivider.app */
+.custom-shape-divider-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top svg {
+    position: relative;
+    display: block;
+    width: calc(143% + 1.3px);
+    height: 165px;
+}
+
+.custom-shape-divider-top .shape-fill {
+    fill: #EDE9FF;
+}
+/* Footer */
+.footer-container {
+    background-color: rgb(237, 233, 255);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: rgb(133, 125, 170);
+    font-size: 0.8rem;
 }
