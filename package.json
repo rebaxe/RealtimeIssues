@@ -2,8 +2,8 @@
   "name": "assignment-b2-realtime-web-application",
   "version": "1.0.0",
   "description": "Assignment B2 - Realtime Web Application",
-  "main": "src/server.js",
   "type": "module",
+  "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "start:dev": "nodemon --inspect -r dotenv/config src/server.js",
