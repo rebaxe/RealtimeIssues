@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="issues-container">
+    <h1>Issues</h1>
+    <hr>
+    <ul>
+    {{#each viewData.issues}}
+    <li class="issue-item">
+      <p>#{{this.id}}</p>
+      <p>{{this.title}}</p>
+      <img class="avatar-img" src="{{this.avatar}}" alt="Avatar">
+    </li>
+    <hr>
+    {{/each}}
+    </ul>
+  </div>
+</div>

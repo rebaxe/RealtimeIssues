@@ -12,14 +12,11 @@ import logger from 'morgan'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { router } from './routes/router.js'
-import { connectDB } from './config/mongoose.js'
 
 /**
  * The main function of the application.
  */
 const main = async () => {
-  await connectDB()
-
   const app = express()
   const directoryFullName = dirname(fileURLToPath(import.meta.url))
 
