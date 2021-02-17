@@ -23,46 +23,55 @@ export class IssuesController {
    * @param {Function} next - Express next middleware function.
    */
   async index (req, res, next) {
-    const gitLabIssues = await fetch(URL, {
-      method: 'get',
-      headers: {
-        'Authorization': `Bearer ${TOKEN}`,
-        'Content-Type': 'application/json'
-      }
-    }).then(res => res.json())
-    console.log(gitLabIssues)
-    const viewData = {
-      issues: gitLabIssues.map(
-        issue => ({
-          id: issue.iid,
-          title: issue.title,
-          description: issue.description,
-          avatar: issue.author.avatar_url
+    try {
+      const gitLabIssues = await fetch(URL, {
+        method: 'get',
+        headers: {
+          'Authorization': `Bearer ${TOKEN}`,
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+      console.log(gitLabIssues)
+      const viewData = {
+        issues: gitLabIssues.map(
+          issue => ({
+            id: issue.iid,
+            title: issue.title,
+            description: issue.description,
+            avatar: issue.author.avatar_url
+          })
+        ).sort((a, b) => {
+          return a.id - b.id
         })
-      ).sort((a, b) => {
-        return a.id - b.id
-      })
+      }
+      console.log(viewData)
+      res.render('issues/index', { viewData })
+    } catch (error) {
+      next(error)
     }
-    console.log(viewData)
-    res.render('issues/index', { viewData })
   }
 
   async view (req, res, next) {
-    const issue = await fetch(`${URL}/${req.params.id}`, {
-      method: 'get',
-      headers: {
-        'Authorization': `Bearer ${TOKEN}`,
-        'Content-Type': 'application/json'
+    try {
+      const issue = await fetch(`${URL}/${req.params.id}`, {
+        method: 'get',
+        headers: {
+          'Authorization': `Bearer ${TOKEN}`,
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+      const viewData = {
+        id: issue.iid,
+        title: issue.title,
+        description: issue.description,
+        state: issue.state,
+        author: issue.author.name,
+        avatar: issue.author.avatar_url
       }
-    }).then(res => res.json())
-    const viewData = {
-      id: issue.iid,
-      title: issue.title,
-      description: issue.description,
-      state: issue.state,
-      author: issue.author.name,
-      avatar: issue.author.avatar_url
+      res.render('issues/view', { viewData })
+    } catch (error) {
+      error.status = 404
+      next(error)
     }
-    res.render('issues/view', { viewData })
   }
 }
