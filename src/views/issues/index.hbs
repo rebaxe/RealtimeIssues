@@ -1,15 +1,16 @@
 <div class="wrapper">
   <div class="issues-container">
     <h1>Issues</h1>
-    <hr>
     <ul>
     {{#each viewData.issues}}
-    <li class="issue-item">
-      <p>#{{this.id}}</p>
-      <p>{{this.title}}</p>
-      <img class="avatar-img" src="{{this.avatar}}" alt="Avatar">
-    </li>
     <hr>
+    <li class="issue-item">
+      <span class="issue-id">#{{this.id}}</span>
+      <span class="issue-title">{{this.title}}</span>
+      <!--<img class="issue-avatar" src="{{this.avatar}}" alt="Avatar">
+      <span class="issue-description">Description:<br>{{this.description}}</span>-->
+      <a href="./issues/{{this.id}}"><i class="fas fa-arrow-circle-right"></i></a>
+    </li>
     {{/each}}
     </ul>
   </div>

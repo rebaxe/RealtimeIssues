@@ -13,3 +13,5 @@ export const router = express.Router()
 const controller = new IssuesController()
 
 router.get('/', controller.index)
+
+router.get('/:id', controller.view)

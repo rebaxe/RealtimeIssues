@@ -110,20 +110,53 @@ ul.nav-bar > li > a:hover {
 .issues-container {
     width: 90%;
     padding: 5px 10px;
-    border-radius: 5px;
+    border: 1px solid rgb(67, 63, 88);
+    border-radius: 10px;
+    background-color: rgb(236, 234, 250);
+    margin: 10px;
 }
 
 .issue-item {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: repeat(1fr);
-    grid-gap: 5px;
-    margin: 5px;
+    grid-template-columns: auto 1fr 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 5px 5px;
+    grid-template-areas:
+        "id title title avatar"
+        ". description description .";
+    padding: 5px;
+}
+.issue-id {
+    grid-area: id;
+    color: grey;
 }
 
-img.avatar-img {
+.issue-title {
+    grid-area: title;
+}
+
+.issue-avatar {
     height: 30px;
     border-radius: 50%;
+    grid-area: avatar;
+}
+
+.issue-description {
+    grid-area: description;
+    font-size: 0.9rem;
+}
+
+.issue-title-view {
+    font-size: 1.3rem;
+}
+
+a {
+    color: rgb(67, 63, 88);
+    transition: ease-in-out 0.3s;
+}
+
+a:hover {
+    transform: scale(1.25, 1.25);
 }
 /* Footer */
 .footer-container {

@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="issues-container">
+    <h1 class="issue-title-view">#{{viewData.id}} {{viewData.title}}</h1>
+    <hr>
+    {{#if viewData.description}}
+    <span>{{viewData.description}}</span>
+    {{else}}
+    <span>There is no description for this issue.</span>
+    {{/if}}
+    <div class="issue-data">
+      {{viewData.state}}
+      <img class="issue-avatar" src="{{viewData.avatar}}" alt="Avatar">
+      {{viewData.author}}
+    </div>
+  </div>
+</div>
