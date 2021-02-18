@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
-    background-color: rgb(237, 233, 255);
+    background-color: #ffffff;
     height: 100vh;
 }
 
@@ -16,7 +16,7 @@ body {
 .nav-bar-container {
     width: 100%;
     padding: 20px;
-    background-color: rgb(67, 63, 88);
+    background-color: #ACB7C0;
     position: relative;
 }
 
@@ -35,16 +35,16 @@ ul.nav-bar > li {
 
 ul.nav-bar > li > a {
     text-decoration: none;
-    background-color: rgb(67, 63, 88);
-    color: rgb(237, 233, 255);
+    background-color: #ACB7C0;
+    color: #F5F5F5;
     padding: 5px 10px;
     transition: ease-in 0.5s;
     border-radius: 5px;
 }
 
 ul.nav-bar > li > a:hover {
-    background-color: rgb(133, 125, 170);
-    color: white;
+    background-color: #D2D5DB;
+    color: black;
     border-radius: 20px;
 }
 
@@ -57,7 +57,7 @@ ul.nav-bar > li > a:hover {
     align-items: center;
     height: 100%;
     width: 100%;
-    color: rgb(67, 63, 88);
+    color: #ACB7C0;
 }
 
 /* Wave shape - generated at shapedivider.app */
@@ -79,7 +79,7 @@ ul.nav-bar > li > a:hover {
 }
 
 .custom-shape-divider-top .shape-fill {
-    fill: #433F58;
+    fill: #ACB7C0;
 }
 
 /* Home page */
@@ -98,8 +98,9 @@ ul.nav-bar > li > a:hover {
 
 /* Issues */
 .wrapper {
-    height: 80%;
+    height: 85%;
     width: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -110,10 +111,10 @@ ul.nav-bar > li > a:hover {
 .issues-container {
     width: 90%;
     padding: 5px 10px;
-    border: 1px solid rgb(67, 63, 88);
-    border-radius: 10px;
-    background-color: rgb(236, 234, 250);
-    margin: 10px;
+    border: 1px solid #ACB7C0;
+    background-color: #F5F5F5;
+    margin: 30px 10px;
+    border-radius: 5px;
 }
 
 .issue-item {
@@ -151,16 +152,24 @@ ul.nav-bar > li > a:hover {
 }
 
 a {
-    color: rgb(67, 63, 88);
+    color: #608080;
     transition: ease-in-out 0.3s;
 }
 
 a:hover {
     transform: scale(1.25, 1.25);
 }
+
+.go-back-btn {
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    font-size: 2rem;
+}
+
 /* Footer */
 .footer-container {
-    background-color: rgb(237, 233, 255);
+    background-color: #ACB7C0;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -170,6 +179,6 @@ a:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: rgb(133, 125, 170);
+    color:#F5F5F5;
     font-size: 0.8rem;
 }

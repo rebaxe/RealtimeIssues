@@ -37,7 +37,6 @@ export class IssuesController {
           issue => ({
             id: issue.iid,
             title: issue.title,
-            description: issue.description,
             avatar: issue.author.avatar_url
           })
         ).sort((a, b) => {
