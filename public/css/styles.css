@@ -25,6 +25,7 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    color: #F5F5F5;
 }
 
 ul.nav-bar > li {
@@ -47,6 +48,7 @@ ul.nav-bar > li > a:hover {
     color: black;
     border-radius: 20px;
 }
+
 
 /* General */
 .container {
@@ -117,6 +119,10 @@ ul.nav-bar > li > a:hover {
     border-radius: 5px;
 }
 
+.issues-container > ul {
+    margin-top: 15px;
+}
+
 .issue-item {
     display: grid;
     grid-template-columns: auto 1fr 1fr auto;
@@ -125,7 +131,7 @@ ul.nav-bar > li > a:hover {
     grid-template-areas:
         "id title title avatar"
         ". description description .";
-    padding: 5px;
+    padding: 10px 5px;
 }
 
 .issue-id {
@@ -179,14 +185,14 @@ button.close-btn {
 }
 
 .open-issue {
-    background-color: #43655A;
+    background-color: #ACB7C0;
     color: white;
-    padding: 3px 20px;
+    padding: 5px 20px;
     border-radius: 15px;
 }
 
 .closed-issue {
-    background-color: #772a2a;
+    background-color: #ACB7C0;
     color: white;
     padding: 3px 20px;
     border-radius: 15px;
@@ -230,4 +236,11 @@ a:hover {
     align-items: center;
     color:#F5F5F5;
     font-size: 0.8rem;
+}
+
+/* Media queries */
+@media screen and (min-width: 950px) {
+    .issues-container {
+        width: 70%;
+    }
 }

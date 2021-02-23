@@ -4,6 +4,8 @@
       <h1 class="issue-title-view">#{{viewData.id}} {{viewData.title}}</h1>
       {{#if viewData.open}}
       <button class="close-btn">Close issue</button>
+      {{else}}
+      <button class="close-btn">Reopen issue</button>
       {{/if}}
     </div>
     <hr>
@@ -17,11 +19,11 @@
     
     <div class="issue-data">
       {{#if viewData.open}}
-      <div class="open-issue">Open</div>
+      <div class="open-issue"><i class="fas fa-lock-open"></i> Open</div>
       {{else}}
-      <div class="closed-issue">Closed</div>
+      <div class="closed-issue"><i class="fas fa-lock"></i> Closed</div>
       {{/if}}
-      <span>Updated at: {{viewData.updated}}</span>
+      <span>Last update: {{viewData.updated}}</span>
       <div class="author-data">
         <img class="issue-avatar" src="{{viewData.avatar}}" alt="Avatar">
         {{viewData.author}}
