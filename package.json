@@ -35,6 +35,7 @@
     "eslint-plugin-node": "*",
     "eslint-plugin-promise": "*",
     "eslint-plugin-standard": "*",
+    "ngrok": "^3.4.0",
     "nodemon": "^2.0.7"
   },
   "eslintConfig": {
