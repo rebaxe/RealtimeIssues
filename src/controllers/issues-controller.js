@@ -26,7 +26,7 @@ export class IssuesController {
       const gitLabIssues = await fetch(URL, {
         method: 'get',
         headers: {
-          'Authorization': `Bearer ${TOKEN}`,
+          Authorization: `Bearer ${TOKEN}`,
           'Content-Type': 'application/json'
         }
       }).then(res => res.json())
@@ -61,7 +61,7 @@ export class IssuesController {
       const issue = await fetch(`${URL}/${req.params.id}`, {
         method: 'get',
         headers: {
-          'Authorization': `Bearer ${TOKEN}`,
+          Authorization: `Bearer ${TOKEN}`,
           'Content-Type': 'application/json'
         }
       }).then(res => res.json())

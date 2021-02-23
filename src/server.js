@@ -12,6 +12,8 @@ import logger from 'morgan'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { router } from './routes/router.js'
+import http from 'http'
+import { Server } from 'socket.io'
 
 /**
  * The main function of the application.
@@ -58,6 +60,19 @@ const main = async () => {
   //   }
   // }))
 
+  // Add socket.io to the server.
+  const server = http.createServer(app)
+  const io = new Server(server)
+
+  // Log connections/disconnections.
+  io.on('connection', (socket) => {
+    console.log('a user connected')
+
+    socket.on('disconnect', () => {
+      console.log('user disconnected')
+    })
+  })
+
   // Middleware to be executed before the routes.
   app.use((req, res, next) => {
     // Flash messages - survives only a round trip.
@@ -67,6 +82,9 @@ const main = async () => {
     // }
     // Pass the base URL to views.
     res.locals.baseURL = baseURL
+
+    // Add socket.io to response-objects.
+    res.io = io
 
     next()
   })
@@ -84,7 +102,7 @@ const main = async () => {
   })
 
   // Start server and listen on port.
-  app.listen(process.env.PORT, () => {
+  server.listen(process.env.PORT, () => {
     console.log(`Server running at http://localhost:${process.env.PORT}`)
     console.log('Press Ctrl+C to terminate.')
   })
