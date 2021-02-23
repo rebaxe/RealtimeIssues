@@ -15,3 +15,7 @@ const controller = new IssuesController()
 router.get('/', controller.index)
 
 router.get('/:id', controller.view)
+
+router.get('/:id/close', controller.close)
+
+router.get('/:id/reopen', controller.reopen)

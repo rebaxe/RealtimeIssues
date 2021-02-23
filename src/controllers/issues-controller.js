@@ -87,4 +87,36 @@ export class IssuesController {
       next(error)
     }
   }
+
+  async close (req, res, next) {
+    try {
+      await fetch(`${URL}/${req.params.id}?state_event=close`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+      res.redirect('.')
+    } catch (error) {
+      error.status = 404
+      next(error)
+    }
+  }
+
+  async reopen (req, res, next) {
+    try {
+      await fetch(`${URL}/${req.params.id}?state_event=reopen`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+      res.redirect('.')
+    } catch (error) {
+      error.status = 404
+      next(error)
+    }
+  }
 }

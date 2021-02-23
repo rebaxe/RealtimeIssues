@@ -3,9 +3,9 @@
     <div class="issue-heading">
       <h1 class="issue-title-view">#{{viewData.id}} {{viewData.title}}</h1>
       {{#if viewData.open}}
-      <button class="close-btn">Close issue</button>
+      <a href="./issues/{{viewData.id}}/close" class="close-reopen-btn">Close issue</a>
       {{else}}
-      <button class="close-btn">Reopen issue</button>
+      <a href="./issues/{{viewData.id}}/reopen" class="close-reopen-btn">Reopen issue</a>
       {{/if}}
     </div>
     <hr>

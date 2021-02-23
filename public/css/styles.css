@@ -160,7 +160,7 @@ ul.nav-bar > li > a:hover {
     position: relative;
 }
 
-button.close-btn {
+a.close-reopen-btn {
     position: absolute; 
     top: 5px;
     right: 0;
@@ -169,6 +169,12 @@ button.close-btn {
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
+    transition: ease-in-out 0.3s;
+    text-decoration: none;
+}
+
+a.close-reopen-btn:hover {
+    transform: scale(1.05, 1.05);
 }
 
 .issue-title-view {
