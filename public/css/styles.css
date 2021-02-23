@@ -110,7 +110,7 @@ ul.nav-bar > li > a:hover {
 
 .issues-container {
     width: 90%;
-    padding: 5px 10px;
+    padding: 20px;
     border: 1px solid #ACB7C0;
     background-color: #F5F5F5;
     margin: 30px 10px;
@@ -127,6 +127,7 @@ ul.nav-bar > li > a:hover {
         ". description description .";
     padding: 5px;
 }
+
 .issue-id {
     grid-area: id;
     color: grey;
@@ -143,12 +144,60 @@ ul.nav-bar > li > a:hover {
 }
 
 .issue-description {
-    grid-area: description;
-    font-size: 0.9rem;
+    background-color: white;
+    border: 1px solid #ACB7C0;
+    margin: 10px 0;
+    padding: 15px;
+}
+
+.issue-heading {
+    position: relative;
+}
+
+button.close-btn {
+    position: absolute; 
+    top: 5px;
+    right: 0;
+    background-color: #608080;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
 }
 
 .issue-title-view {
     font-size: 1.3rem;
+    padding: 15px 0px;
+}
+
+.issue-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 0 0;
+}
+
+.open-issue {
+    background-color: #43655A;
+    color: white;
+    padding: 3px 20px;
+    border-radius: 15px;
+}
+
+.closed-issue {
+    background-color: #772a2a;
+    color: white;
+    padding: 3px 20px;
+    border-radius: 15px;
+}
+
+.author-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
 a {

@@ -15,8 +15,7 @@ const TOKEN = process.env.ACCESS_TOKEN
  */
 export class IssuesController {
   /**
-   * Renders a view and sends the rendered HTML string as an HTTP response.
-   * index GET.
+   * Renders a view of all issues and sends the rendered HTML string as an HTTP response.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -50,6 +49,13 @@ export class IssuesController {
     }
   }
 
+  /**
+   * Renders a view of a single issue fetched from GitLab project and sends the HTML as a HTTP response.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
   async view (req, res, next) {
     try {
       const issue = await fetch(`${URL}/${req.params.id}`, {
@@ -63,10 +69,18 @@ export class IssuesController {
         id: issue.iid,
         title: issue.title,
         description: issue.description,
-        state: issue.state,
         author: issue.author.name,
         avatar: issue.author.avatar_url
       }
+      // Store state as true or false (open or closed).
+      if (issue.state === 'opened') {
+        viewData.open = true
+      } else {
+        viewData.open = false
+      }
+      // Convert date string.
+      viewData.updated = new Date(issue.updated_at).toLocaleString()
+
       res.render('issues/view', { viewData })
     } catch (error) {
       error.status = 404
