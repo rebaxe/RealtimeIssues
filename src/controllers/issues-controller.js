@@ -75,14 +75,13 @@ export class IssuesController {
         }
       }).then(res => res.json())
 
-      /**
-       * Check state of issue.
-       *
-       * @returns {boolean} Returns a boolean telling if the issue is open.
-       */
-      const openIssue = () => {
-        return updatedIssue.state === 'opened'
+      let openIssue = ''
+      if (updatedIssue.state === 'opened') {
+        openIssue = true
+      } else {
+        openIssue = false
       }
+
       res.io.emit('updateIssue', {
         id: updatedIssue.iid,
         title: updatedIssue.title,
@@ -116,14 +115,14 @@ export class IssuesController {
           'Content-Type': 'application/json'
         }
       }).then(res => res.json())
-      /**
-       * Check state of issue.
-       *
-       * @returns {boolean} Returns a boolean telling if the issue is open.
-       */
-      const openIssue = () => {
-        return updatedIssue.state === 'opened'
+
+      let openIssue = ''
+      if (updatedIssue.state === 'opened') {
+        openIssue = true
+      } else {
+        openIssue = false
       }
+
       res.io.emit('updateIssue', {
         id: updatedIssue.iid,
         title: updatedIssue.title,
