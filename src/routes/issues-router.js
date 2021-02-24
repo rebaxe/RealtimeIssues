@@ -17,7 +17,5 @@ router.get('/', controller.index)
 router.get('/new', controller.new)
 router.post('/create', controller.create)
 
-router.get('/:id', controller.view)
-
 router.get('/:id/close', controller.close)
 router.get('/:id/reopen', controller.reopen)
