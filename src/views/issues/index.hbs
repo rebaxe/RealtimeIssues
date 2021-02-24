@@ -1,10 +1,12 @@
 <div class="wrapper">
   <div class="issues-container">
-    <h1>Issues</h1>
+    <div class="issue-heading">
+      <h1>Issues</h1>
+      <a href="./issues/new" class="new-issue-btn">New issue</a>
+    </div>
     <hr>
     <ul>
     {{#each viewData.issues}}
-    <!-- <hr> -->
     <li class="issue-item">
       <span class="issue-id">#{{this.id}}</span>
       <span class="issue-title">{{this.title}}</span>

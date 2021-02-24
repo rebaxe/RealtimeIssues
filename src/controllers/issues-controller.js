@@ -88,6 +88,13 @@ export class IssuesController {
     }
   }
 
+  /**
+   * Closes an issue.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
   async close (req, res, next) {
     try {
       await fetch(`${URL}/${req.params.id}?state_event=close`, {
@@ -96,7 +103,7 @@ export class IssuesController {
           Authorization: `Bearer ${TOKEN}`,
           'Content-Type': 'application/json'
         }
-      }).then(res => res.json())
+      })
       res.redirect('.')
     } catch (error) {
       error.status = 404
@@ -104,6 +111,13 @@ export class IssuesController {
     }
   }
 
+  /**
+   * Reopens an issue.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
   async reopen (req, res, next) {
     try {
       await fetch(`${URL}/${req.params.id}?state_event=reopen`, {
@@ -112,11 +126,25 @@ export class IssuesController {
           Authorization: `Bearer ${TOKEN}`,
           'Content-Type': 'application/json'
         }
-      }).then(res => res.json())
+      })
       res.redirect('.')
     } catch (error) {
       error.status = 404
       next(error)
     }
+  }
+
+  /**
+   * Renders a view for creating a new snippet.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  new (req, res) {
+    res.render('issues/new')
+  }
+
+  async create (req, res, next) {
+    //
   }
 }
