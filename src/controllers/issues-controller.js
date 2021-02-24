@@ -114,6 +114,13 @@ export class IssuesController {
     res.render('issues/new')
   }
 
+  /**
+   * Renders a view for creating a new issue.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
   async create (req, res, next) {
     try {
       const newIssue = {
