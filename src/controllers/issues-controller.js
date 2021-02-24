@@ -6,6 +6,7 @@
  */
 
 import fetch from 'node-fetch'
+import moment from 'moment'
 
 const URL = process.env.API_URL
 const TOKEN = process.env.ACCESS_TOKEN
@@ -38,7 +39,7 @@ export class IssuesController {
             description: issue.description,
             author: issue.author.name,
             avatar: issue.author.avatar_url,
-            updated: issue.updated_at,
+            updated: moment(issue.updated_at).fromNow(),
             state: issue.state,
             open: false
           })

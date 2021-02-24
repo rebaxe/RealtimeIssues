@@ -182,12 +182,13 @@ a.close-reopen-btn:hover {
 }
 
 .issue-data {
+    grid-area: data;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0 0 0;
-    grid-area: data;
+    font-size: 0.8rem;
 }
 
 .open-issue,
@@ -196,7 +197,6 @@ a.close-reopen-btn:hover {
     color: white;
     padding: 3px 20px;
     border-radius: 15px;
-    font-size: 0.8rem;
 }
 
 .author-data {
