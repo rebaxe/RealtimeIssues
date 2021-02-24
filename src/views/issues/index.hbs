@@ -2,16 +2,38 @@
   <div class="issues-container">
     <div class="issue-heading">
       <h1>Issues</h1>
-      <a href="./issues/new" class="new-issue-btn">New issue</a>
     </div>
     <hr>
     <ul>
     {{#each viewData.issues}}
     <li class="issue-item">
-      <span class="issue-id">#{{this.id}}</span>
-      <span class="issue-title">{{this.title}}</span>
-      <a href="./issues/{{this.id}}"><i class="fas fa-arrow-circle-right"></i></a>
+      <h1 class="issue-id">#{{this.id}} </h1>
+      <h1 class="issue-title">{{this.title}}</h1>
+      {{#if this.open}}
+      <a href="./issues/{{this.id}}/close" class="close-reopen-btn">Close issue</a>
+      {{else}}
+      <a href="./issues/{{this.id}}/reopen" class="close-reopen-btn">Reopen issue</a>
+      {{/if}}
+      <div class="issue-description">
+      {{#if this.description}}
+      <span>{{this.description}}</span>
+      {{else}}
+      <span>There is no description for this issue.</span>
+      {{/if}}
+      </div>
+      <div class="issue-data">
+      {{#if this.open}}
+      <div class="open-issue"><i class="fas fa-lock-open"></i> Open</div>
+      {{else}}
+      <div class="closed-issue"><i class="fas fa-lock"></i> Closed</div>
+      {{/if}}
+      <span>Last update: {{this.updated}}</span>
+      <div class="author-data">
+        <img class="issue-avatar" src="{{this.avatar}}" alt="Avatar">
+        {{this.author}}
+      </div>
     </li>
+    <hr>
     {{/each}}
     </ul>
   </div>

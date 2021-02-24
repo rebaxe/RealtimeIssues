@@ -35,12 +35,23 @@ export class IssuesController {
           issue => ({
             id: issue.iid,
             title: issue.title,
-            avatar: issue.author.avatar_url
+            description: issue.description,
+            author: issue.author.name,
+            avatar: issue.author.avatar_url,
+            updated: issue.updated_at,
+            state: issue.state,
+            open: false
           })
         ).sort((a, b) => {
           return a.id - b.id
         })
       }
+      viewData.issues.forEach(issue => {
+        if (issue.state === 'opened') {
+          issue.open = true
+        }
+      })
+      console.log(viewData.issues)
       res.render('issues/index', { viewData })
     } catch (error) {
       next(error)
@@ -102,7 +113,7 @@ export class IssuesController {
           'Content-Type': 'application/json'
         }
       })
-      res.redirect('.')
+      res.redirect('..')
     } catch (error) {
       error.status = 404
       next(error)
@@ -125,7 +136,7 @@ export class IssuesController {
           'Content-Type': 'application/json'
         }
       })
-      res.redirect('.')
+      res.redirect('..')
     } catch (error) {
       error.status = 404
       next(error)
