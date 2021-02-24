@@ -20,4 +20,18 @@ if (issueTemplate) {
     const issueList = document.querySelector('#issue-list')
     issueList.appendChild(li)
   })
+
+  socket.on('updateIssue', (arg) => {
+    const issues = document.querySelectorAll('.issue-item')
+    issues.forEach(issue => {
+      if (issue.querySelector('.issue-id').textContent === `#${arg.id} `) {
+        const parent = issue.parentNode
+        const issueString = hbsTemplate(arg)
+        const li = document.createElement('li')
+        li.classList.add('issue-item')
+        li.innerHTML = issueString
+        parent.replaceChild(li, issue)
+      }
+    })
+  })
 }

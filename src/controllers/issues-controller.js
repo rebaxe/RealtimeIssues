@@ -67,12 +67,31 @@ export class IssuesController {
    */
   async close (req, res, next) {
     try {
-      await fetch(`${URL}/${req.params.id}?state_event=close`, {
+      const updatedIssue = await fetch(`${URL}/${req.params.id}?state_event=close`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${TOKEN}`,
           'Content-Type': 'application/json'
         }
+      }).then(res => res.json())
+
+      /**
+       * Check state of issue.
+       *
+       * @returns {boolean} Returns a boolean telling if the issue is open.
+       */
+      const openIssue = () => {
+        return updatedIssue.state === 'opened'
+      }
+      res.io.emit('updateIssue', {
+        id: updatedIssue.iid,
+        title: updatedIssue.title,
+        description: updatedIssue.description,
+        author: updatedIssue.author.name,
+        avatar: updatedIssue.author.avatar_url,
+        updated: moment(updatedIssue.updated_at).fromNow(),
+        state: updatedIssue.state,
+        open: openIssue
       })
       res.redirect('..')
     } catch (error) {
@@ -90,12 +109,30 @@ export class IssuesController {
    */
   async reopen (req, res, next) {
     try {
-      await fetch(`${URL}/${req.params.id}?state_event=reopen`, {
+      const updatedIssue = await fetch(`${URL}/${req.params.id}?state_event=reopen`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${TOKEN}`,
           'Content-Type': 'application/json'
         }
+      }).then(res => res.json())
+      /**
+       * Check state of issue.
+       *
+       * @returns {boolean} Returns a boolean telling if the issue is open.
+       */
+      const openIssue = () => {
+        return updatedIssue.state === 'opened'
+      }
+      res.io.emit('updateIssue', {
+        id: updatedIssue.iid,
+        title: updatedIssue.title,
+        description: updatedIssue.description,
+        author: updatedIssue.author.name,
+        avatar: updatedIssue.author.avatar_url,
+        updated: moment(updatedIssue.updated_at).fromNow(),
+        state: updatedIssue.state,
+        open: openIssue
       })
       res.redirect('..')
     } catch (error) {
