@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="issues-container">
-    <ul>
+    <ul id="issue-list">
     {{#each viewData.issues}}
     <li class="issue-item">
       <h1 class="issue-id">#{{this.id}} </h1>
@@ -33,3 +33,31 @@
     </ul>
   </div>
 </div>
+
+<template id="issue-template">
+  <h1 class="issue-id">#\{{this.id}} </h1>
+  <h1 class="issue-title">\{{this.title}}</h1>
+  \{{#if this.open}}
+  <a href="./issues/\{{this.id}}/close" class="close-reopen-btn">Close issue</a>
+  \{{else}}
+  <a href="./issues/\{{this.id}}/reopen" class="close-reopen-btn">Reopen issue</a>
+  \{{/if}}
+  <div class="issue-description">
+  \{{#if this.description}}
+  <span>\{{this.description}}</span>
+  \{{else}}
+  <span>There is no description for this issue.</span>
+  \{{/if}}
+  </div>
+  <div class="issue-data">
+  \{{#if this.open}}
+  <div class="open-issue"><i class="fas fa-lock-open"></i> Open</div>
+  \{{else}}
+  <div class="closed-issue"><i class="fas fa-lock"></i> Closed</div>
+  \{{/if}}
+  <span>Last update: \{{this.updated}}</span>
+  <div class="author-data">
+    <img class="issue-avatar" src="\{{this.avatar}}" alt="Avatar">
+    \{{this.author}}
+  </div>
+</template>

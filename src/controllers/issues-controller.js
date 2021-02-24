@@ -52,7 +52,6 @@ export class IssuesController {
           issue.open = true
         }
       })
-      console.log(viewData.issues)
       res.render('issues/index', { viewData })
     } catch (error) {
       next(error)
@@ -128,14 +127,25 @@ export class IssuesController {
         title: req.body.title,
         description: req.body.description
       }
-      console.log(req.body)
-      await fetch(`${URL}`, {
+      const newIssueResponse = await fetch(`${URL}`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${TOKEN}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(newIssue)
+      }).then(res => res.json())
+
+      // Send new issue to all subscribers.
+      res.io.emit('issue', {
+        id: newIssueResponse.iid,
+        title: newIssueResponse.title,
+        description: newIssueResponse.description,
+        author: newIssueResponse.author.name,
+        avatar: newIssueResponse.author.avatar_url,
+        updated: moment(newIssueResponse.updated_at).fromNow(),
+        state: newIssueResponse.state,
+        open: true
       })
       res.redirect('../issues')
     } catch (error) {
