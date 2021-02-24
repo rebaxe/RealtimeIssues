@@ -30,7 +30,6 @@ export class IssuesController {
           'Content-Type': 'application/json'
         }
       }).then(res => res.json())
-      console.log(gitLabIssues)
       const viewData = {
         issues: gitLabIssues.map(
           issue => ({
@@ -42,7 +41,6 @@ export class IssuesController {
           return a.id - b.id
         })
       }
-      console.log(viewData)
       res.render('issues/index', { viewData })
     } catch (error) {
       next(error)
@@ -145,6 +143,24 @@ export class IssuesController {
   }
 
   async create (req, res, next) {
-    //
+    try {
+      const newIssue = {
+        title: req.body.title,
+        description: req.body.description
+      }
+      console.log(req.body)
+      await fetch(`${URL}`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newIssue)
+      })
+      res.redirect('../issues')
+    } catch (error) {
+      error.status = 404
+      next(error)
+    }
   }
 }

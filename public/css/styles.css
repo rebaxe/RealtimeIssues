@@ -262,6 +262,7 @@ a:hover {
 #new-issue-description {
     width: 100%;
     resize: none;
+    padding: 5px;
 }
 
 .submit-btn {
