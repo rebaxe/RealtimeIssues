@@ -8,6 +8,7 @@
 import express from 'express'
 import hbs from 'express-hbs'
 // import session from 'express-session'
+import helmet from 'helmet'
 import logger from 'morgan'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
@@ -21,6 +22,22 @@ import { Server } from 'socket.io'
 const main = async () => {
   const app = express()
   const directoryFullName = dirname(fileURLToPath(import.meta.url))
+
+  app.use(helmet.contentSecurityPolicy({
+    directives: {
+      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+      'script-src': [
+        "'self'",
+        'https://ka-f.fontawesome.com',
+        'https://kit.fontawesome.com',
+        'cdn.jsdelivr.net',
+        "'unsafe-eval'"
+      ],
+      'connect-src': ["'self'", 'https://ka-f.fontawesome.com'],
+      'img-src': ["'self'", 'https://gitlab.lnu.se', 'https://secure.gravatar.com']
+    }
+  })
+  )
 
   const baseURL = process.env.BASE_URL || '/'
 
