@@ -14,7 +14,7 @@ if (issueTemplate) {
   socket.on('issue', arg => {
     const issueString = hbsTemplate(arg)
     const li = document.createElement('li')
-    li.classList.add('.issue-item')
+    li.classList.add('issue-item')
     li.innerHTML = issueString
 
     const issueList = document.querySelector('#issue-list')
