@@ -175,7 +175,7 @@ a.close-reopen-btn:hover {
 
 .issue-description {
     background-color: white;
-    border: 1px solid #ACB7C0;
+    border: 1px solid #ebebeb;
     margin: 10px 0;
     padding: 15px;
     grid-area: desc;
@@ -210,6 +210,7 @@ a.close-reopen-btn:hover {
 .issue-avatar {
     height: 30px;
     border-radius: 50%;
+    border: 1px solid #ebebeb;
 }
 
 /* New issue page */
@@ -241,6 +242,7 @@ a.close-reopen-btn:hover {
     justify-content: center;
     align-items: flex-start;
     gap: 5px;
+    margin-top: 10px;
 }
 
 #new-issue-title {
