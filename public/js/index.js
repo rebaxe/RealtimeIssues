@@ -36,3 +36,11 @@ if (issueTemplate) {
     }
   })
 }
+
+const flash = document.querySelector('.flash-container')
+if (flash) {
+  const closeBtn = document.querySelector('.flash-close')
+  closeBtn.addEventListener('click', () => {
+    flash.remove()
+  })
+}

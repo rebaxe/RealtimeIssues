@@ -1,5 +1,7 @@
 {{#if flash}}
-<div class="flash {{flash.news}}">
-    {{flash.message}}
+<div class="flash-container">
+  <div class="flash {{flash.news}}">
+    {{flash.message}} <div class="flash-close"><i class="fas fa-times"></i></div>
+  </div>
 </div>
 {{/if}}

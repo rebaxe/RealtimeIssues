@@ -298,13 +298,33 @@ li {
     font-size: 0.8rem;
 }
 /* Flash messages */
+.flash-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .flash {
     padding: 10px 20px;
     width: 60%;
     border-radius: 10px;
-    text-align: center;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.flash-close {
     position: absolute;
-    top: 80px;
+    right: 10px;
+    transition: ease-in-out 0.3s;
+}
+
+.flash-close:hover {
+    color: rgb(101, 114, 104);
+    cursor: pointer;
 }
 
 .good-news {
