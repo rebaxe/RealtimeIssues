@@ -7,7 +7,7 @@
 
 import express from 'express'
 import hbs from 'express-hbs'
-// import session from 'express-session'
+import session from 'express-session'
 import helmet from 'helmet'
 import logger from 'morgan'
 import { dirname, join } from 'path'
@@ -41,7 +41,7 @@ const main = async () => {
 
   const baseURL = process.env.BASE_URL || '/'
 
-  // const sessionSecret = process.env.SESSION_SECRET
+  const sessionSecret = process.env.SESSION_SECRET
 
   // Set up a morgan logger using the dev format for log entries.
   app.use(logger('dev'))
@@ -68,18 +68,18 @@ const main = async () => {
   app.set('trust proxy', 1)
 
   // Session middleware - setup and use.
-  // app.use(session({
-  //   name: 'snippetSessionID',
-  //   secret: sessionSecret,
-  //   resave: false,
-  //   saveUninitialized: false,
-  //   cookie: {
-  //     httpOnly: true,
-  //     secure: true,
-  //     maxAge: 1000 * 60 * 120,
-  //     sameSite: 'lax'
-  //   }
-  // }))
+  app.use(session({
+    name: 'issuesSessionID',
+    secret: sessionSecret,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      maxAge: 1000 * 60 * 120,
+      sameSite: 'lax'
+    }
+  }))
 
   // Add socket.io to the server.
   const server = http.createServer(app)
@@ -97,10 +97,10 @@ const main = async () => {
   // Middleware to be executed before the routes.
   app.use((req, res, next) => {
     // Flash messages - survives only a round trip.
-    // if (req.session.flash) {
-    //   res.locals.flash = req.session.flash
-    //   delete req.session.flash
-    // }
+    if (req.session.flash) {
+      res.locals.flash = req.session.flash
+      delete req.session.flash
+    }
     // Pass the base URL to views.
     res.locals.baseURL = baseURL
 

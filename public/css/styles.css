@@ -297,6 +297,25 @@ li {
     color:#F5F5F5;
     font-size: 0.8rem;
 }
+/* Flash messages */
+.flash {
+    padding: 10px 20px;
+    width: 60%;
+    border-radius: 10px;
+    text-align: center;
+    position: absolute;
+    top: 80px;
+}
+
+.good-news {
+    background-color: rgb(178, 207, 183);
+    border: 1px solid rgb(101, 114, 104);
+}
+
+.bad-news {
+    background-color: rgb(150, 70, 56);
+    border: 1px solid rgb(73, 35, 28);
+}
 
 /* Media queries */
 @media screen and (min-width: 950px) {
