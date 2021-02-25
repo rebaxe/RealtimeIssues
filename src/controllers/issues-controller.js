@@ -92,10 +92,11 @@ export class IssuesController {
         state: updatedIssue.state,
         open: openIssue
       })
+      req.session.flash = { news: 'good-news', message: 'Issue updated.' }
       res.redirect('..')
     } catch (error) {
-      error.status = 404
-      next(error)
+      req.session.flash = { news: 'bad-news', message: 'Failed to update the issue.' }
+      res.redirect('..')
     }
   }
 
@@ -133,10 +134,11 @@ export class IssuesController {
         state: updatedIssue.state,
         open: openIssue
       })
+      req.session.flash = { news: 'good-news', message: 'Issue updated.' }
       res.redirect('..')
     } catch (error) {
-      error.status = 404
-      next(error)
+      req.session.flash = { news: 'bad-news', message: 'Failed to update the issue.' }
+      res.redirect('..')
     }
   }
 
@@ -183,11 +185,11 @@ export class IssuesController {
         state: newIssueResponse.state,
         open: true
       })
-
+      req.session.flash = { news: 'good-news', message: 'Issue successfully created.' }
       res.redirect('../issues')
     } catch (error) {
-      error.status = 404
-      next(error)
+      req.session.flash = { news: 'bad-news', message: 'Failed to create issue.' }
+      res.redirect('../issues')
     }
   }
 
