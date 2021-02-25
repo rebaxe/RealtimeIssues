@@ -35,11 +35,14 @@
   </div>
   {{else}}
     <div class="empty-list">
-      <span>No issues to show here. Go ahead and add one!</span>
+      <div class="empty-list-item">
+        <span>No issues to show here. Go ahead and add one!</span>
+      </div>
     </div>
     {{/if}}
 </div>
 
+<!-- A template to hold an issue. -->
 <template id="issue-template">
   <h1 class="issue-id">#\{{this.id}} </h1>
   <h1 class="issue-title">\{{this.title}}</h1>
