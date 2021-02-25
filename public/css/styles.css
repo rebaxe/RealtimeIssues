@@ -222,15 +222,8 @@ a.close-reopen-btn:hover {
     align-items: center;
 }
 
-.empty-list-item {
-    height: 20%;
-    width: 60%;
-    background-color: #F5F5F5;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+li {
+    list-style: none;
 }
 
 /* New issue page */
