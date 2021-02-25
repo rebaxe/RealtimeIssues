@@ -1,5 +1,6 @@
 <div class="wrapper">
-  <div class="issues-container">
+  {{#if viewData.issues.length}}
+  <div class="issues-container">  
     <ul id="issue-list">
     {{#each viewData.issues}}
     <li class="issue-item">
@@ -30,8 +31,13 @@
       </div>
     </li>
     {{/each}}
-    </ul>
+    </ul>  
   </div>
+  {{else}}
+    <div class="empty-list">
+      <span>No issues to show here. Go ahead and add one!</span>
+    </div>
+    {{/if}}
 </div>
 
 <template id="issue-template">

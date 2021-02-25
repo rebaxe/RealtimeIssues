@@ -82,7 +82,7 @@ export class IssuesController {
         openIssue = false
       }
 
-      res.io.emit('updateIssue', {
+      res.io.emit('issue', {
         id: updatedIssue.iid,
         title: updatedIssue.title,
         description: updatedIssue.description,
@@ -123,7 +123,7 @@ export class IssuesController {
         openIssue = false
       }
 
-      res.io.emit('updateIssue', {
+      res.io.emit('issue', {
         id: updatedIssue.iid,
         title: updatedIssue.title,
         description: updatedIssue.description,
@@ -183,10 +183,44 @@ export class IssuesController {
         state: newIssueResponse.state,
         open: true
       })
+
       res.redirect('../issues')
     } catch (error) {
       error.status = 404
       next(error)
     }
+  }
+
+  /**
+   * Renders a view for creating a new issue or updating an issue from hook.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
+  async handleHook (req, res, next) {
+    // If the call is from hook - skip redirect.
+    if (req.headers['x-gitlab-event']) {
+      res.status(200).send('Hook accepted')
+    }
+
+    let openIssue = ''
+    if (req.body.state === 'opened') {
+      openIssue = true
+    } else {
+      openIssue = false
+    }
+
+    // Send new issue to all subscribers.
+    res.io.emit('issue', {
+      id: req.body.id,
+      title: req.body.title,
+      description: req.body.description,
+      author: req.body.author,
+      avatar: req.body.avatar,
+      updated: moment(req.body.updated_at).fromNow(),
+      state: req.body.state,
+      open: openIssue
+    })
   }
 }

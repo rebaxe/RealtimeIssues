@@ -12,26 +12,26 @@ if (issueTemplate) {
 
   // Listen for message "new issue" from the server
   socket.on('issue', arg => {
+    // Create a new issue from template.
     const issueString = hbsTemplate(arg)
     const li = document.createElement('li')
     li.classList.add('issue-item')
     li.innerHTML = issueString
 
-    const issueList = document.querySelector('#issue-list')
-    issueList.appendChild(li)
-  })
-
-  socket.on('updateIssue', (arg) => {
+    let issueExists = false
     const issues = document.querySelectorAll('.issue-item')
+    // Check if the issue already exists - if so, update it.
     issues.forEach(issue => {
       if (issue.querySelector('.issue-id').textContent === `#${arg.id} `) {
         const parent = issue.parentNode
-        const issueString = hbsTemplate(arg)
-        const li = document.createElement('li')
-        li.classList.add('issue-item')
-        li.innerHTML = issueString
         parent.replaceChild(li, issue)
+        issueExists = true
       }
     })
+    // If issue does not exist - add new issue.
+    if (!issueExists) {
+      const issueList = document.querySelector('#issue-list')
+      issueList.appendChild(li)
+    }
   })
 }
