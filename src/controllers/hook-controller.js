@@ -26,7 +26,6 @@ export class HookController {
       updated_at: req.body.object_attributes.updated_at,
       state: req.body.object_attributes.state
     }
-    console.log(req.body)
 
     next()
   }

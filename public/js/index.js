@@ -8,8 +8,7 @@ if (issueTemplate) {
   const hbsTemplate = window.Handlebars.compile(issueTemplate.innerHTML)
 
   // Create a socket connection using Socket.io
-  const socket = window.io()
-  // const socket = window.io('/', { path: '/issues-app/socket.io' })
+  const socket = window.io('/', { path: '/issues-app/socket.io' })
 
   // Listen for message "new issue" from the server
   socket.on('issue', arg => {
